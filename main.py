@@ -35,12 +35,12 @@ common_surnames = [
     "Yasamin","Sorawit","Tayyebeh","Giryes","Alireza","Carrington","Akbari","Takaki","Dinesh","Arsomngern","Maninis","Azim","Kazuhiro","Stephan","Junsuk","Ebrahimi","Zamir","Ramos","Washington","Elezi","Baldwin","Seong","Chadebec","Bruce","Kumawat","Teneggi","Saharia","Unal","Alfarra","Rewatbowornwong","Uzun","Bessadok","Hirose","Aleix","Naseer","Honari","Qayyum","Javed","Furnari","Kapidis","Coskun","Eadom","Northcutt","Nagar","Giuseppe","Belkhouja","Chattopadhyay0","Phongthawee","Mallis","Saengkyongam","Masuyama","Jafarian"]
 
 # Filter out authors that don't match common English surnames
-potential_chinese_authors = [(title, author) for title, author in titles_and_authors_alternative if not any(surname in author for surname in common_surnames)]
+potential_chinese_authors = [(first_author,title) for title, first_author in titles_and_authors_alternative if not any(surname in first_author for surname in common_surnames)]
 
 import pandas as pd
 
 # Create a dataframe from the extracted data
-df = pd.DataFrame(potential_chinese_authors, columns=['Title', 'First Author'])
+df = pd.DataFrame(potential_chinese_authors, columns=['First Author','Title'])
 
 # Save the dataframe to an Excel file
 output_path = "./filtered_titles_and_authors.xlsx"
